@@ -50,3 +50,20 @@ $router->group(['prefix' => 'proovedor'], function () use ($router) {
     $router->put('{proovedor}', 'ProveedorController@update');
     $router->delete('{proovedor}', 'ProveedorController@destroy');
 });
+
+/*ESTO ES LO QUE IMPORTA*/
+$router->group(['prefix' => 'tiposdocumento'], function () use ($router) {
+
+    $router->get('/', 'TipoDocumentoController@index');
+});
+
+$router->group(['prefix' => 'tdocomprobante'], function () use ($router) {
+
+    $router->get('/', 'TipoDocumentoComprobanteController@index');
+});
+
+$router->group(['prefix' => 'modopago'], function () use ($router) {
+
+    $router->get('/', 'ModoPagoController@index');
+});
+
