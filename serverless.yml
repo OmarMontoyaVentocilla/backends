@@ -1,0 +1,32 @@
+service: lumen-species-breeds
+
+provider:
+    name: aws
+    region: us-east-1
+    stage: prod
+    runtime: provided
+    environment:
+        # Laravel environment variables
+        APP_STORAGE: '/tmp'
+        DB_HOST: masters-vetpraxis-app.chppmdyr6yga.us-east-1.rds.amazonaws.com
+        DB_PORT: 3306
+        DB_DATABASE: countries
+        DB_USERNAME: vetpraxis
+        DB_PASSWORD: vawbid-boWka8-tyhqyh
+        APP_KEY: zXIXiAS5HRT9EEmLvRYrBGc8K3HmJwhs
+        APP_DEBUG: false
+        APP_TIMEZONE: UTC
+        DB_CONNECTION: mysql
+
+plugins:
+    - ./vendor/bref/bref
+
+functions:
+    api:
+        handler: public/index.php
+        timeout: 10 # in seconds (API Gateway has a timeout of 30 seconds)
+        layers:
+            - ${bref:layer.php-73-fpm}
+        events:
+            -   http: 'ANY /'
+            -   http: 'ANY /{proxy+}'
