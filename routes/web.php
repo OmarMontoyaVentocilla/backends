@@ -67,3 +67,11 @@ $router->group(['prefix' => 'modopago'], function () use ($router) {
     $router->get('/', 'ModoPagoController@index');
 });
 
+$router->group(['prefix' => 'cliente'], function () use ($router) {
+
+    $router->get('/', 'ClienteController@index');
+    $router->post('/', 'ClienteController@store');
+    $router->get('{cliente}', 'ClienteController@show');
+    $router->put('{cliente}', 'ClienteController@update');
+    $router->delete('{cliente}', 'ClienteController@destroy');
+});
