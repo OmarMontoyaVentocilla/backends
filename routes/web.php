@@ -75,3 +75,26 @@ $router->group(['prefix' => 'cliente'], function () use ($router) {
     $router->put('{cliente}', 'ClienteController@update');
     $router->delete('{cliente}', 'ClienteController@destroy');
 });
+
+$router->group(['prefix' => 'caja'], function () use ($router) {
+
+    $router->get('/', 'CajaController@index');
+    $router->post('/', 'CajaController@store');
+    $router->get('{caja}', 'CajaController@show');
+    $router->put('{caja}', 'CajaController@update');
+    $router->delete('{caja}', 'CajaController@destroy');
+});
+
+$router->group(['prefix' => 'docorrelativo'], function () use ($router) {
+
+    $router->get('/', 'DocumentoCorrelativoController@index');
+    $router->post('/', 'DocumentoCorrelativoController@store');
+    $router->get('{docorrelativo}', 'DocumentoCorrelativoController@show');
+    $router->put('{docorrelativo}', 'DocumentoCorrelativoController@update');
+    $router->delete('{docorrelativo}', 'DocumentoCorrelativoController@destroy');
+});
+
+$router->group(['prefix' => 'historialcaja'], function () use ($router) {
+
+    $router->get('/', 'HistorialCajaController@index');
+}); 
