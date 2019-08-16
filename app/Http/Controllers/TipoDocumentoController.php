@@ -32,7 +32,7 @@ class TipoDocumentoController extends Controller
     
     public function querySearchDType($valor_caja){
         
-        $valor=TipoDocumento::select('descripcion')
+        $valor=TipoDocumento::select('id','descripcion')
         ->where(function($query) use($valor_caja) {
           $query->where('descripcion','like','%'.$valor_caja.'%');
       })->where(function($query){

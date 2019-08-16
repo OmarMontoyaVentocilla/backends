@@ -23,7 +23,7 @@ class Cliente extends Model
     protected $table = 'clients';
 
     protected $fillable = [
-        'document_types_id','ubigeo_id','nro_documnto','nombres'
+        'document_types_id','ubigeo_id','nro_documnto','nombres','estado'
     ];
 
     /**

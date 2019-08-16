@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cliente;
-
 use Illuminate\Http\Request;
 use App\Traits\ApiResponse;
 use Illuminate\Http\Response;
@@ -30,10 +29,12 @@ class ClienteController extends Controller
      */
     public function querySearchCliente($valor_caja){
         
-        $valor=Cliente::select('nro_documnto','ubigeo_id','nombres','document_types_id')
+        $valor=Cliente::select('id','nro_documnto','ubigeo_id','nombres','document_types_id')
         ->where(function($query) use($valor_caja) {
           $query->where('nro_documnto','like','%'.$valor_caja.'%')
                 ->orWhere('nombres', 'like','%'.$valor_caja.'%');
+      })->where(function($query){
+        $query->where('estado',1);
       });
         return $valor;
     }
@@ -92,7 +93,8 @@ class ClienteController extends Controller
                 'document_types_id'=> $request->input('document_types_id'),
                 'ubigeo_id'=> $request->input('ubigeo_id'),
                 'nro_documnto'=> $request->input('nro_documnto'),
-                'nombres'=> $request->input('nombres')
+                'nombres'=> $request->input('nombres'),
+                'estado'=> 1
             ]
         );
 
@@ -105,11 +107,11 @@ class ClienteController extends Controller
      * @param int $breed
      * @return \Illuminate\Http\Response
      */
-    public function show($breed)
+    public function show($cliente)
     {
-        $breed = Breed::findOrFail($breed);
+        $cliente = Cliente::findOrFail($cliente);
 
-        return $this->successResponse($breed);
+        return $this->successResponse($cliente);
     }
 
     /**
@@ -119,19 +121,26 @@ class ClienteController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $breed)
+    public function update(Request $request, $client)
     {
+    
         $rules = [
-            'name' => 'max:255|unique:breeds,name,'.$breed,
-            'species_id' => 'exists:species,id',
+            'document_types_id'=> 'required',
+            'ubigeo_id'=> 'required',
+            'nro_documnto'=> 'required',
+            'nombres'=> 'required'
         ];
+
         $this->validate($request, $rules);
-
-        $breed = Breed::findOrFail($breed);
-        $breed->fill($request->all());
-        $breed->save();
-
-        return $this->successResponse($breed);
+        $client = Cliente::findOrFail($client);
+        $client->document_types_id = $request->input('document_types_id');
+        $client->ubigeo_id= $request->input('ubigeo_id');
+        $client->nro_documnto= $request->input('nro_documnto');
+        $client->nombres= $request->input('nombres');
+        $client->estado= '1';
+        if ($client->save()) {
+            return $this->successResponse($client, Response::HTTP_CREATED);
+		}
     }
 
     /**
@@ -140,11 +149,14 @@ class ClienteController extends Controller
      * @param int $breed
      * @return \Illuminate\Http\Response
      */
-    public function destroy($breed)
+    public function destroy($client)
     {
-        $breed = Breed::findOrFail($breed);
-        $breed->delete();
-
-        return $this->successResponse($breed);
+        $client = Cliente::findOrFail($client);
+        $client->estado = 0;
+        if ($client->save()) {
+            return $this->successResponse($client);
+       }
+        //$client->delete();
+       
     }
 }

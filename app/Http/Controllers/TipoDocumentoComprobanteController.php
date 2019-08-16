@@ -32,7 +32,7 @@ class TipoDocumentoComprobanteController extends Controller
     
     public function querySearchDTypeComprobante($valor_caja){
         
-        $valor=TipoDocumentoComprobante::select('descripcion','codigo')
+        $valor=TipoDocumentoComprobante::select('id','descripcion','codigo')
         ->where(function($query) use($valor_caja) {
           $query->where('descripcion','like','%'.$valor_caja.'%')
                 ->orWhere('codigo', 'like','%'.$valor_caja.'%');

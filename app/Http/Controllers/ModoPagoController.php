@@ -31,7 +31,7 @@ class ModoPagoController extends Controller
     
     public function querySearchModoPago($valor_caja){
         
-        $valor=ModoPago::select('descripcion')
+        $valor=ModoPago::select('id','descripcion')
         ->where(function($query) use($valor_caja) {
           $query->where('descripcion','like','%'.$valor_caja.'%');
       });
