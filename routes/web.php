@@ -52,6 +52,19 @@ $router->group(['prefix' => 'proovedor'], function () use ($router) {
 });
 
 /*ESTO ES LO QUE IMPORTA*/
+
+$router->group(['middleware'=>'auth'], function () use  ($router){
+   
+    $router->get('/test', 'AuthController@test');    
+});
+
+
+$router->post('/login', 'AuthController@login');
+$router->post('/register', 'AuthController@store');
+$router->post('/logout', 'AuthController@logout');
+$router->post('/refresh', 'AuthController@refresh');
+
+
 $router->group(['prefix' => 'tiposdocumento'], function () use ($router) {
 
     $router->get('/', 'TipoDocumentoController@index');
@@ -62,10 +75,7 @@ $router->group(['prefix' => 'tdocomprobante'], function () use ($router) {
     $router->get('/', 'TipoDocumentoComprobanteController@index');
 });
 
-$router->group(['prefix' => 'modopago'], function () use ($router) {
 
-    $router->get('/', 'ModoPagoController@index');
-});
 
 $router->group(['prefix' => 'cliente'], function () use ($router) {
 
