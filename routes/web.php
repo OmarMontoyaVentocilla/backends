@@ -75,6 +75,15 @@ $router->group(['prefix' => 'tdocomprobante'], function () use ($router) {
     $router->get('/', 'TipoDocumentoComprobanteController@index');
 });
 
+$router->group(['prefix' => 'families'], function () use ($router) {
+
+    $router->get('/', 'FamilyController@index');
+    $router->post('/', 'FamilyController@store');
+    $router->get('{families}', 'FamilyController@show');
+    $router->put('{families}', 'FamilyController@update');
+    $router->delete('{families}', 'FamilyController@destroy');
+
+});
 
 
 $router->group(['prefix' => 'cliente'], function () use ($router) {

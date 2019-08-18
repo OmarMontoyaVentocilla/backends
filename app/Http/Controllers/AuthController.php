@@ -60,14 +60,10 @@ class AuthController extends Controller
 
     public function logout(Request $request) {
 
-        $this->validate($request, ['token' => 'required']);
-        
-        try {
-            $this->jwt->parseToken()->invalidate($request->input('token'));
-            return response()->json(['success' => true, 'message'=> "Te deslogueaste"]);
-        } catch (JWTException $e) {
-            return response()->json(['success' => false, 'error' => 'Fallo al desloguearse'], 500);
-        }
+        $this->jwt->invalidate($this->jwt->getToken());
+        return response()->json([
+            'msg' => 'Deslogueado'
+        ], 200);
     }
 
     public function refresh()
