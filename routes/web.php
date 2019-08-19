@@ -14,31 +14,12 @@
 use Illuminate\Http\Request;
 
 
-//Species Routes
-$router->group(['prefix' => 'species'], function () use ($router) {
 
-    $router->get('/', 'SpeciesController@index');
-    $router->post('/', 'SpeciesController@store');
-    $router->get('{species}', 'SpeciesController@show');
-    $router->put('{species}', 'SpeciesController@update');
-    $router->delete('{species}', 'SpeciesController@destroy');
-
-});
-
-//Breeds Routes
-$router->group(['prefix' => 'breeds'], function () use ($router) {
-
-    $router->get('/', 'BreedsController@index');
-    $router->post('/', 'BreedsController@store');
-    $router->get('{breed}', 'BreedsController@show');
-    $router->put('{breed}', 'BreedsController@update');
-    $router->delete('{breed}', 'BreedsController@destroy');
-});
 
 //UBIGEOS ROUTES
 $router->group(['prefix' => 'ubigeos'], function () use ($router) {
 
-    $router->get('/', 'UbigeosController@index');
+    $router->get('/', 'AddressController@index');
 });
 
 //PROOVEDOR ROUTES

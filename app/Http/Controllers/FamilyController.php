@@ -15,7 +15,7 @@ class FamilyController extends Controller
 
     public function index(Request $request)
     {
-        $families = Family::get();
+        $families = Family::where('estado',1)->get();
         return $this->successResponse($families);
     }
 
