@@ -1,5 +1,6 @@
 # JWT
 guiarse de este link https://iwader.co.uk/post/tymon-jwt-auth-with-lumen-5-2
+#
  Create a new file at config/auth.php with the following contents
  <?php
 
