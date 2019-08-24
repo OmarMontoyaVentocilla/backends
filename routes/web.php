@@ -66,6 +66,47 @@ $router->group(['prefix' => 'families'], function () use ($router) {
 
 });
 
+$router->group(['prefix' => 'subfamilies'], function () use ($router) {
+
+    $router->get('/', 'SubFamilyController@index');
+    $router->post('/', 'SubFamilyController@store');
+    $router->get('{subfamilies}', 'SubFamilyController@show');
+    $router->put('{subfamilies}', 'SubFamilyController@update');
+    $router->delete('{subfamilies}', 'SubFamilyController@destroy');
+
+});
+
+$router->group(['prefix' => 'unitmesure'], function () use ($router) {
+
+    $router->get('/', 'UnitOfMeasureController@index');
+    $router->post('/', 'UnitOfMeasureController@store');
+    $router->get('{unitmesure}', 'UnitOfMeasureController@show');
+    $router->put('{unitmesure}', 'UnitOfMeasureController@update');
+    $router->delete('{unitmesure}', 'UnitOfMeasureController@destroy');
+
+});
+
+$router->group(['prefix' => 'unitpeso'], function () use ($router) {
+
+    $router->get('/', 'UnitOfWeightController@index');
+    $router->post('/', 'UnitOfWeightController@store');
+    $router->get('{unitpeso}', 'UnitOfWeightController@show');
+    $router->put('{unitpeso}', 'UnitOfWeightController@update');
+    $router->delete('{unitpeso}', 'UnitOfWeightController@destroy');
+
+});
+
+$router->group(['prefix' => 'presentacion'], function () use ($router) {
+
+    $router->get('/', 'PresentationController@index');
+    $router->post('/', 'PresentationController@store');
+    $router->get('{presentacion}', 'PresentationController@show');
+    $router->put('{presentacion}', 'PresentationController@update');
+    $router->delete('{presentacion}', 'PresentationController@destroy');
+
+});
+
+
 
 $router->group(['prefix' => 'cliente'], function () use ($router) {
 
