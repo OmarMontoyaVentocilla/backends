@@ -15,10 +15,10 @@ class SubFamilyController extends Controller
 
     public function index(Request $request)
     {
-        $subFamilies = SubFamily::scopeFamilyJoin()
-                    ->select('subfamilies.*','families.*')
-                    ->get();
-
+      
+        $subFamilies=SubFamily::join('families','subfamilies.familia_id','=','families.id')
+                    ->select('subfamilies.id','subfamilies.descripcion as descripcion_sub','families.descripcion as descripcion_fam')
+                    ->where('subfamilies.estado','1')->get();
         return $this->successResponse($subFamilies);
     }
 
