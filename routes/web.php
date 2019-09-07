@@ -83,7 +83,15 @@ $router->group(['prefix' => 'unitmesure'], function () use ($router) {
     $router->get('{unitmesure}', 'UnitOfMeasureController@show');
     $router->put('{unitmesure}', 'UnitOfMeasureController@update');
     $router->delete('{unitmesure}', 'UnitOfMeasureController@destroy');
+});
 
+$router->group(['prefix' => 'bank'], function () use ($router) {
+
+    $router->get('/', 'BankController@index');
+    $router->post('/', 'BankController@store');
+    $router->get('{bank}', 'BankController@show');
+    $router->put('{bank}', 'BankController@update');
+    $router->delete('{bank}', 'BankController@destroy');
 });
 
 $router->group(['prefix' => 'unitpeso'], function () use ($router) {

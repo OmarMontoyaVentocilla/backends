@@ -17,7 +17,7 @@ class SubFamilyController extends Controller
     {
       
         $subFamilies=SubFamily::join('families','subfamilies.familia_id','=','families.id')
-                    ->select('subfamilies.id','subfamilies.descripcion as descripcion_sub','families.descripcion as descripcion_fam')
+                    ->select('subfamilies.id','subfamilies.descripcion as descripcion_sub','families.id as id_fam' ,'families.descripcion as descripcion_fam')
                     ->where('subfamilies.estado','1')->get();
         return $this->successResponse($subFamilies);
     }
