@@ -94,6 +94,55 @@ $router->group(['prefix' => 'bank'], function () use ($router) {
     $router->delete('{bank}', 'BankController@destroy');
 });
 
+$router->group(['prefix' => 'permission'], function () use ($router) {
+
+    $router->get('/', 'PermissionController@index');
+    $router->post('/', 'PermissionController@store');
+    $router->get('{permission}', 'PermissionController@show');
+    $router->put('{permission}', 'PermissionController@update');
+    $router->delete('{permission}', 'PermissionController@destroy');
+});
+
+
+$router->group(['prefix' => 'payment-vocuher'], function () use ($router) {
+
+    $router->get('/', 'PaymentVoucher@index');
+    $router->post('/', 'PaymentVoucher@store');
+    $router->get('{payment-vocuher}', 'PaymentVoucher@show');
+    $router->put('{payment-vocuher}', 'PaymentVoucher@update');
+    $router->delete('{payment-vocuher}', 'PaymentVoucher@destroy');
+});
+
+
+$router->group(['prefix' => 'payment-method'], function () use ($router) {
+
+    $router->get('/', 'PaymentMethodController@index');
+    $router->post('/', 'PaymentMethodController@store');
+    $router->get('{payment-method}', 'PaymentMethodController@show');
+    $router->put('{payment-method}', 'PaymentMethodController@update');
+    $router->delete('{payment-method}', 'PaymentMethodController@destroy');
+});
+
+
+$router->group(['prefix' => 'payment-status'], function () use ($router) {
+
+    $router->get('/', 'PaymentStatusController@index');
+    $router->post('/', 'PaymentStatusController@store');
+    $router->get('{payment-status}', 'PaymentStatusController@show');
+    $router->put('{payment-status}', 'PaymentStatusController@update');
+    $router->delete('{payment-status}', 'PaymentStatusController@destroy');
+});
+
+$router->group(['prefix' => 'type-docustomer'], function () use ($router) {
+
+    $router->get('/', 'TypeDocumentCustomerController@index');
+    $router->post('/', 'TypeDocumentCustomerController@store');
+    $router->get('{type-docustomer}', 'TypeDocumentCustomerController@show');
+    $router->put('{type-docustomer}', 'TypeDocumentCustomerController@update');
+    $router->delete('{type-docustomer}', 'TypeDocumentCustomerController@destroy');
+});
+
+
 $router->group(['prefix' => 'unitpeso'], function () use ($router) {
 
     $router->get('/', 'UnitOfWeightController@index');

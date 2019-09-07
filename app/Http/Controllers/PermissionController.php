@@ -22,7 +22,7 @@ class PermissionController extends Controller
     public function store(Request $request)
     { 
         $rules = [
-            'nombre' => 'required',
+            'name' => 'required',
             'estado' => 'required'
         ];
 
@@ -40,27 +40,27 @@ class PermissionController extends Controller
         return $this->successResponse($permission, Response::HTTP_OK);
     }
     
-    public function update(Request $request, $bank)
+    public function update(Request $request, $permission)
     {
         $rules = [
-            'nombre' => 'required',
+            'name' => 'required',
             'estado' => 'required'
         ];
         $this->validate($request, $rules);
 
         $permission = Permission::findOrFail($permission);
         $permission->fill($request->all());
-        $bank->save();
+        $permission->save();
 
-        return $this->successResponse($bank);
+        return $this->successResponse($permission);
     }
 
-    public function destroy($bank)
+    public function destroy($permission)
     {
-        $bank = Bank::findOrFail($bank);
-        $bank->delete();
+        $permission = Permission::findOrFail($permission);
+        $permission->delete();
 
-        return $this->successResponse($bank);
+        return $this->successResponse($permission);
     }
 
 }
