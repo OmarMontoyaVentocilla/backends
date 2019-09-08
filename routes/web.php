@@ -163,6 +163,37 @@ $router->group(['prefix' => 'presentacion'], function () use ($router) {
 
 });
 
+$router->group(['prefix' => 'plans'], function () use ($router) {
+
+    $router->get('/', 'PlanController@index');
+    $router->post('/', 'PlanController@store');
+    $router->get('{plans}', 'PlanController@show');
+    $router->put('{plans}', 'PlanController@update');
+    $router->delete('{plans}', 'PlanController@destroy');
+
+});
+
+
+$router->group(['prefix' => 'plan-modules'], function () use ($router) {
+
+    $router->get('/', 'PlanModuleController@index');
+    $router->post('/', 'PlanModuleController@store');
+    $router->get('{plans}', 'PlanModuleController@show');
+    $router->put('{plans}', 'PlanModuleController@update');
+    $router->delete('{plans}', 'PlanModuleController@destroy');
+
+});
+
+
+$router->group(['prefix' => 'limits'], function () use ($router) {
+
+    $router->get('/', 'LimitController@index');
+    $router->post('/', 'LimitController@store');
+    $router->get('{limits}', 'LimitController@show');
+    $router->put('{limits}', 'LimitController@update');
+    $router->delete('{limits}', 'LimitController@destroy');
+
+});
 
 
 $router->group(['prefix' => 'cliente'], function () use ($router) {
