@@ -106,11 +106,11 @@ $router->group(['prefix' => 'permission'], function () use ($router) {
 
 $router->group(['prefix' => 'payment-vocuher'], function () use ($router) {
 
-    $router->get('/', 'PaymentVoucher@index');
-    $router->post('/', 'PaymentVoucher@store');
-    $router->get('{payment-vocuher}', 'PaymentVoucher@show');
-    $router->put('{payment-vocuher}', 'PaymentVoucher@update');
-    $router->delete('{payment-vocuher}', 'PaymentVoucher@destroy');
+    $router->get('/', 'PaymentVoucherController@index');
+    $router->post('/', 'PaymentVoucherController@store');
+    $router->get('{payment-vocuher}', 'PaymentVoucherController@show');
+    $router->put('{payment-vocuher}', 'PaymentVoucherController@update');
+    $router->delete('{payment-vocuher}', 'PaymentVoucherController@destroy');
 });
 
 
