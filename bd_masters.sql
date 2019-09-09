@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-08-2019 a las 08:53:58
+-- Tiempo de generación: 09-09-2019 a las 04:11:16
 -- Versión del servidor: 10.3.16-MariaDB
 -- Versión de PHP: 7.3.7
 
@@ -19,22 +19,8 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `bd_lk`
+-- Base de datos: `bd_masters`
 --
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `acceso`
---
-
-CREATE TABLE `acceso` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `role_id` int(10) UNSIGNED NOT NULL,
-  `module_id` int(10) UNSIGNED NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -2100,23 +2086,6 @@ INSERT INTO `addresses` (`id`, `ubi_identificador`, `ubi_departamento`, `ubi_pro
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `armed_combos`
---
-
-CREATE TABLE `armed_combos` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `nuevo_codigo` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nuevo_nombre` varchar(90) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `precio_compra_total` decimal(8,2) NOT NULL,
-  `precio_venta_final` decimal(8,2) NOT NULL,
-  `precio_diferencia` decimal(8,2) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `bank`
 --
 
@@ -2128,300 +2097,296 @@ CREATE TABLE `bank` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- --------------------------------------------------------
-
 --
--- Estructura de tabla para la tabla `boxes`
+-- Volcado de datos para la tabla `bank`
 --
 
-CREATE TABLE `boxes` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `descripcion` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ip` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `estado` varchar(2) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Volcado de datos para la tabla `boxes`
---
-
-INSERT INTO `boxes` (`id`, `descripcion`, `ip`, `estado`, `created_at`, `updated_at`) VALUES
-(1, 'Caja 01', 'Encargada de A', '1', '2019-08-16 02:57:01', '2019-08-16 02:57:01'),
-(2, 'Caja 02', 'Encargada de B', '1', '2019-08-16 02:57:10', '2019-08-16 02:57:10'),
-(3, 'Caja 03', 'Encargada de C', '1', '2019-08-16 02:57:16', '2019-08-16 02:57:16'),
-(4, 'Caja 04', 'Encargada de D', '1', '2019-08-16 02:57:21', '2019-08-16 02:57:21'),
-(5, 'Caja 05', 'Encargada de E', '0', '2019-08-16 02:57:27', '2019-08-16 02:58:06');
+INSERT INTO `bank` (`id`, `nombre_banco`, `estado`, `created_at`, `updated_at`) VALUES
+(1, 'Interbank', '1', '2019-09-07 22:24:03', '2019-09-07 22:24:03');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `brands`
+-- Estructura de tabla para la tabla `countries`
 --
 
-CREATE TABLE `brands` (
+CREATE TABLE `countries` (
   `id` int(10) UNSIGNED NOT NULL,
-  `nombre` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `subfamilia_id` int(10) UNSIGNED NOT NULL,
-  `estado` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `iso` varchar(4) NOT NULL,
+  `name` varchar(250) NOT NULL,
+  `estado` varchar(4) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `update_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `countries`
+--
+
+INSERT INTO `countries` (`id`, `iso`, `name`, `estado`, `created_at`, `update_at`) VALUES
+(1, 'AF', 'Afganistán', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(2, 'AX', 'Islas Gland', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(3, 'AL', 'Albania', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(4, 'DE', 'Alemania', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(5, 'AD', 'Andorra', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(6, 'AO', 'Angola', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(7, 'AI', 'Anguilla', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(8, 'AQ', 'Antártida', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(9, 'AG', 'Antigua y Barbuda', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(10, 'AN', 'Antillas Holandesas', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(11, 'SA', 'Arabia Saudí', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(12, 'DZ', 'Argelia', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(13, 'AR', 'Argentina', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(14, 'AM', 'Armenia', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(15, 'AW', 'Aruba', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(16, 'AU', 'Australia', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(17, 'AT', 'Austria', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(18, 'AZ', 'Azerbaiyán', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(19, 'BS', 'Bahamas', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(20, 'BH', 'Bahréin', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(21, 'BD', 'Bangladesh', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(22, 'BB', 'Barbados', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(23, 'BY', 'Bielorrusia', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(24, 'BE', 'Bélgica', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(25, 'BZ', 'Belice', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(26, 'BJ', 'Benin', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(27, 'BM', 'Bermudas', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(28, 'BT', 'Bhután', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(29, 'BO', 'Bolivia', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(30, 'BA', 'Bosnia y Herzegovina', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(31, 'BW', 'Botsuana', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(32, 'BV', 'Isla Bouvet', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(33, 'BR', 'Brasil', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(34, 'BN', 'Brunéi', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(35, 'BG', 'Bulgaria', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(36, 'BF', 'Burkina Faso', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(37, 'BI', 'Burundi', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(38, 'CV', 'Cabo Verde', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(39, 'KY', 'Islas Caimán', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(40, 'KH', 'Camboya', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(41, 'CM', 'Camerún', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(42, 'CA', 'Canadá', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(43, 'CF', 'República Centroafricana', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(44, 'TD', 'Chad', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(45, 'CZ', 'República Checa', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(46, 'CL', 'Chile', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(47, 'CN', 'China', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(48, 'CY', 'Chipre', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(49, 'CX', 'Isla de Navidad', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(50, 'VA', 'Ciudad del Vaticano', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(51, 'CC', 'Islas Cocos', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(52, 'CO', 'Colombia', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(53, 'KM', 'Comoras', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(54, 'CD', 'República Democrática del Congo', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(55, 'CG', 'Congo', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(56, 'CK', 'Islas Cook', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(57, 'KP', 'Corea del Norte', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(58, 'KR', 'Corea del Sur', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(59, 'CI', 'Costa de Marfil', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(60, 'CR', 'Costa Rica', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(61, 'HR', 'Croacia', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(62, 'CU', 'Cuba', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(63, 'DK', 'Dinamarca', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(64, 'DM', 'Dominica', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(65, 'DO', 'República Dominicana', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(66, 'EC', 'Ecuador', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(67, 'EG', 'Egipto', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(68, 'SV', 'El Salvador', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(69, 'AE', 'Emiratos Árabes Unidos', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(70, 'ER', 'Eritrea', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(71, 'SK', 'Eslovaquia', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(72, 'SI', 'Eslovenia', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(73, 'ES', 'España', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(74, 'UM', 'Islas ultramarinas de Estados Unidos', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(75, 'US', 'Estados Unidos', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(76, 'EE', 'Estonia', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(77, 'ET', 'Etiopía', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(78, 'FO', 'Islas Feroe', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(79, 'PH', 'Filipinas', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(80, 'FI', 'Finlandia', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(81, 'FJ', 'Fiyi', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(82, 'FR', 'Francia', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(83, 'GA', 'Gabón', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(84, 'GM', 'Gambia', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(85, 'GE', 'Georgia', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(86, 'GS', 'Islas Georgias del Sur y Sandwich del Sur', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(87, 'GH', 'Ghana', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(88, 'GI', 'Gibraltar', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(89, 'GD', 'Granada', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(90, 'GR', 'Grecia', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(91, 'GL', 'Groenlandia', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(92, 'GP', 'Guadalupe', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(93, 'GU', 'Guam', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(94, 'GT', 'Guatemala', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(95, 'GF', 'Guayana Francesa', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(96, 'GN', 'Guinea', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(97, 'GQ', 'Guinea Ecuatorial', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(98, 'GW', 'Guinea-Bissau', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(99, 'GY', 'Guyana', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(100, 'HT', 'Haití', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(101, 'HM', 'Islas Heard y McDonald', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(102, 'HN', 'Honduras', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(103, 'HK', 'Hong Kong', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(104, 'HU', 'Hungría', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(105, 'IN', 'India', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(106, 'ID', 'Indonesia', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(107, 'IR', 'Irán', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(108, 'IQ', 'Iraq', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(109, 'IE', 'Irlanda', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(110, 'IS', 'Islandia', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(111, 'IL', 'Israel', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(112, 'IT', 'Italia', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(113, 'JM', 'Jamaica', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(114, 'JP', 'Japón', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(115, 'JO', 'Jordania', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(116, 'KZ', 'Kazajstán', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(117, 'KE', 'Kenia', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(118, 'KG', 'Kirguistán', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(119, 'KI', 'Kiribati', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(120, 'KW', 'Kuwait', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(121, 'LA', 'Laos', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(122, 'LS', 'Lesotho', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(123, 'LV', 'Letonia', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(124, 'LB', 'Líbano', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(125, 'LR', 'Liberia', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(126, 'LY', 'Libia', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(127, 'LI', 'Liechtenstein', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(128, 'LT', 'Lituania', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(129, 'LU', 'Luxemburgo', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(130, 'MO', 'Macao', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(131, 'MK', 'ARY Macedonia', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(132, 'MG', 'Madagascar', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(133, 'MY', 'Malasia', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(134, 'MW', 'Malawi', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(135, 'MV', 'Maldivas', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(136, 'ML', 'Malí', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(137, 'MT', 'Malta', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(138, 'FK', 'Islas Malvinas', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(139, 'MP', 'Islas Marianas del Norte', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(140, 'MA', 'Marruecos', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(141, 'MH', 'Islas Marshall', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(142, 'MQ', 'Martinica', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(143, 'MU', 'Mauricio', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(144, 'MR', 'Mauritania', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(145, 'YT', 'Mayotte', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(146, 'MX', 'México', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(147, 'FM', 'Micronesia', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(148, 'MD', 'Moldavia', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(149, 'MC', 'Mónaco', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(150, 'MN', 'Mongolia', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(151, 'MS', 'Montserrat', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(152, 'MZ', 'Mozambique', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(153, 'MM', 'Myanmar', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(154, 'NA', 'Namibia', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(155, 'NR', 'Nauru', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(156, 'NP', 'Nepal', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(157, 'NI', 'Nicaragua', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(158, 'NE', 'Níger', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(159, 'NG', 'Nigeria', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(160, 'NU', 'Niue', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(161, 'NF', 'Isla Norfolk', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(162, 'NO', 'Noruega', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(163, 'NC', 'Nueva Caledonia', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(164, 'NZ', 'Nueva Zelanda', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(165, 'OM', 'Omán', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(166, 'NL', 'Países Bajos', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(167, 'PK', 'Pakistán', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(168, 'PW', 'Palau', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(169, 'PS', 'Palestina', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(170, 'PA', 'Panamá', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(171, 'PG', 'Papúa Nueva Guinea', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(172, 'PY', 'Paraguay', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(173, 'PE', 'Perú', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(174, 'PN', 'Islas Pitcairn', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(175, 'PF', 'Polinesia Francesa', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(176, 'PL', 'Polonia', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(177, 'PT', 'Portugal', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(178, 'PR', 'Puerto Rico', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(179, 'QA', 'Qatar', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(180, 'GB', 'Reino Unido', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(181, 'RE', 'Reunión', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(182, 'RW', 'Ruanda', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(183, 'RO', 'Rumania', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(184, 'RU', 'Rusia', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(185, 'EH', 'Sahara Occidental', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(186, 'SB', 'Islas Salomón', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(187, 'WS', 'Samoa', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(188, 'AS', 'Samoa Americana', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(189, 'KN', 'San Cristóbal y Nevis', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(190, 'SM', 'San Marino', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(191, 'PM', 'San Pedro y Miquelón', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(192, 'VC', 'San Vicente y las Granadinas', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(193, 'SH', 'Santa Helena', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(194, 'LC', 'Santa Lucía', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(195, 'ST', 'Santo Tomé y Príncipe', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(196, 'SN', 'Senegal', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(197, 'CS', 'Serbia y Montenegro', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(198, 'SC', 'Seychelles', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(199, 'SL', 'Sierra Leona', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(200, 'SG', 'Singapur', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(201, 'SY', 'Siria', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(202, 'SO', 'Somalia', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(203, 'LK', 'Sri Lanka', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(204, 'SZ', 'Suazilandia', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(205, 'ZA', 'Sudáfrica', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(206, 'SD', 'Sudán', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(207, 'SE', 'Suecia', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(208, 'CH', 'Suiza', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(209, 'SR', 'Surinam', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(210, 'SJ', 'Svalbard y Jan Mayen', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(211, 'TH', 'Tailandia', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(212, 'TW', 'Taiwán', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(213, 'TZ', 'Tanzania', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(214, 'TJ', 'Tayikistán', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(215, 'IO', 'Territorio Británico del Océano Índico', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(216, 'TF', 'Territorios Australes Franceses', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(217, 'TL', 'Timor Oriental', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(218, 'TG', 'Togo', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(219, 'TK', 'Tokelau', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(220, 'TO', 'Tonga', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(221, 'TT', 'Trinidad y Tobago', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(222, 'TN', 'Túnez', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(223, 'TC', 'Islas Turcas y Caicos', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(224, 'TM', 'Turkmenistán', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(225, 'TR', 'Turquía', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(226, 'TV', 'Tuvalu', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(227, 'UA', 'Ucrania', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(228, 'UG', 'Uganda', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(229, 'UY', 'Uruguay', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(230, 'UZ', 'Uzbekistán', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(231, 'VU', 'Vanuatu', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(232, 'VE', 'Venezuela', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(233, 'VN', 'Vietnam', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(234, 'VG', 'Islas Vírgenes Británicas', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(235, 'VI', 'Islas Vírgenes de los Estados Unidos', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(236, 'WF', 'Wallis y Futuna', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(237, 'YE', 'Yemen', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(238, 'DJ', 'Yibuti', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(239, 'ZM', 'Zambia', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00'),
+(240, 'ZW', 'Zimbabue', '1', '2019-09-08 05:00:00', '2019-09-08 05:00:00');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cargo`
+-- Estructura de tabla para la tabla `limits`
 --
 
-CREATE TABLE `cargo` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `descripcion` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `sueldo` decimal(8,2) NOT NULL,
-  `estado` varchar(2) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `clients`
---
-
-CREATE TABLE `clients` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `document_types_id` bigint(20) UNSIGNED NOT NULL,
-  `ubigeo_id` int(10) UNSIGNED NOT NULL,
-  `nro_documnto` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nombres` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `estado` varchar(2) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Volcado de datos para la tabla `clients`
---
-
-INSERT INTO `clients` (`id`, `document_types_id`, `ubigeo_id`, `nro_documnto`, `nombres`, `estado`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, '07146512', 'Omar Anthonyyy', '0', '2019-08-15 05:00:00', '2019-08-16 02:40:36'),
-(2, 1, 1, '07143800', 'Liliana Ventocilla', '1', '2019-08-15 06:31:21', '2019-08-15 06:31:21');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `document_correlatives`
---
-
-CREATE TABLE `document_correlatives` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `document_types_comprobant_id` bigint(20) UNSIGNED NOT NULL,
-  `serie` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `correlativo` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Volcado de datos para la tabla `document_correlatives`
---
-
-INSERT INTO `document_correlatives` (`id`, `document_types_comprobant_id`, `serie`, `correlativo`, `created_at`, `updated_at`) VALUES
-(1, 1, 'LK06-124343', '1', '2019-08-16 03:11:43', '2019-08-16 03:11:43'),
-(2, 2, 'LK06-124344', '2', '2019-08-16 03:11:58', '2019-08-16 03:11:58');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `document_types`
---
-
-CREATE TABLE `document_types` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `descripcion` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `estado` varchar(2) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Volcado de datos para la tabla `document_types`
---
-
-INSERT INTO `document_types` (`id`, `descripcion`, `estado`, `created_at`, `updated_at`) VALUES
-(1, 'DNI', '1', '2019-08-14 05:00:00', '2019-08-14 05:00:00'),
-(2, 'RUC', '1', '2019-08-14 05:00:00', '2019-08-14 05:00:00'),
-(3, 'Carnet Extranjeria', '1', '2019-08-14 05:00:00', '2019-08-14 05:00:00');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `document_types_comprobants`
---
-
-CREATE TABLE `document_types_comprobants` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `descripcion` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `codigo` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Volcado de datos para la tabla `document_types_comprobants`
---
-
-INSERT INTO `document_types_comprobants` (`id`, `descripcion`, `codigo`, `created_at`, `updated_at`) VALUES
-(1, 'Factura', 'LK01', '2019-08-15 05:00:00', '2019-08-15 05:00:00'),
-(2, 'Boleta', 'LK06', '2019-08-15 05:00:00', '2019-08-15 05:00:00'),
-(3, 'Nota de venta', 'LK09', '2019-08-15 05:00:00', '2019-08-15 05:00:00');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `employee`
---
-
-CREATE TABLE `employee` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `idcargo` int(10) UNSIGNED NOT NULL,
-  `idhorario` int(10) UNSIGNED NOT NULL,
-  `nombres` varchar(100) NOT NULL,
-  `apellidos` varchar(100) NOT NULL,
-  `fecha_nacimiento` date NOT NULL,
-  `idtipodocumento` bigint(20) UNSIGNED NOT NULL,
-  `nro_documento` varchar(18) NOT NULL,
-  `direccion` varchar(100) NOT NULL,
-  `idubigeo` int(10) UNSIGNED NOT NULL,
-  `nrocuenta` varchar(30) NOT NULL,
-  `nrocuenta_cci` varchar(30) NOT NULL,
-  `idbanco` int(10) UNSIGNED NOT NULL,
-  `iduser` int(11) UNSIGNED NOT NULL,
+CREATE TABLE `limits` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `name` varchar(250) NOT NULL,
+  `value` int(11) NOT NULL,
   `estado` varchar(2) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
-
 --
--- Estructura de tabla para la tabla `families`
+-- Volcado de datos para la tabla `limits`
 --
 
-CREATE TABLE `families` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `descripcion` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `estado` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Volcado de datos para la tabla `families`
---
-
-INSERT INTO `families` (`id`, `descripcion`, `estado`, `created_at`, `updated_at`) VALUES
-(29, 'Aseo personal', '1', '2019-08-24 03:40:53', '2019-08-24 03:40:53'),
-(30, 'Azúcar', '1', '2019-08-24 03:41:02', '2019-08-24 03:41:02'),
-(31, 'Bebida alcoholica', '1', '2019-08-24 03:41:12', '2019-08-24 03:41:12'),
-(32, 'Bebidas', '1', '2019-08-24 03:41:21', '2019-08-24 03:41:21'),
-(33, 'bolsas', '1', '2019-08-24 03:41:35', '2019-08-24 03:41:35'),
-(34, 'conservas', '1', '2019-08-24 03:41:58', '2019-08-24 03:41:58'),
-(35, 'cereales precocidos', '1', '2019-08-24 03:42:29', '2019-08-24 03:42:29');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `historial_boxes`
---
-
-CREATE TABLE `historial_boxes` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `user_id` int(11) UNSIGNED NOT NULL,
-  `boxe_id` bigint(20) UNSIGNED NOT NULL,
-  `montoInicial` double(8,2) NOT NULL,
-  `montoFinal` double(8,2) NOT NULL,
-  `fechaInicio` datetime NOT NULL,
-  `fechaCierre` datetime NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Volcado de datos para la tabla `historial_boxes`
---
-
-INSERT INTO `historial_boxes` (`id`, `user_id`, `boxe_id`, `montoInicial`, `montoFinal`, `fechaInicio`, `fechaCierre`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 124.00, 456.89, '2019-08-15 10:09:08', '2019-08-15 20:19:15', '2019-08-15 05:00:00', '2019-08-15 05:00:00');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `horario`
---
-
-CREATE TABLE `horario` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `descripcion` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nro_dias` int(10) NOT NULL,
-  `nro_horas` int(10) NOT NULL,
-  `estado` varchar(2) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `list_armed_combos`
---
-
-CREATE TABLE `list_armed_combos` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `almacen_id` int(10) UNSIGNED NOT NULL,
-  `combo_armado_id` int(10) UNSIGNED NOT NULL,
-  `precio_compra` decimal(8,2) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `list_order_vent`
---
-
-CREATE TABLE `list_order_vent` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `armedCombo_id` int(10) UNSIGNED NOT NULL,
-  `order_venta_id` bigint(20) UNSIGNED NOT NULL,
-  `cantidad` int(11) NOT NULL,
-  `precioVenta` double(8,2) NOT NULL,
-  `distribucionPresentacion` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `list_payment_purchase_orders`
---
-
-CREATE TABLE `list_payment_purchase_orders` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `orden_compra_pedido_id` int(10) UNSIGNED NOT NULL,
-  `producto_id` int(10) UNSIGNED NOT NULL,
-  `cantidad` int(11) NOT NULL,
-  `precio_compra` decimal(8,2) NOT NULL,
-  `precio_paquete` decimal(8,2) NOT NULL,
-  `precio_unidad` decimal(8,2) NOT NULL,
-  `fecha_vencimiento` date NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+INSERT INTO `limits` (`id`, `name`, `value`, `estado`, `created_at`, `updated_at`) VALUES
+(1, '30 users', 30, '1', '2019-09-09 02:29:48', '2019-09-09 02:47:53'),
+(2, '56 products', 56, '1', '2019-09-09 02:48:08', '2019-09-09 02:48:08');
 
 -- --------------------------------------------------------
 
@@ -2438,309 +2403,215 @@ CREATE TABLE `migrations` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mode_payments`
+-- Estructura de tabla para la tabla `paymentmethod`
 --
 
-CREATE TABLE `mode_payments` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `descripcion` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
+CREATE TABLE `paymentmethod` (
+  `id` int(11) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `estado` char(1) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `mode_payments`
+-- Volcado de datos para la tabla `paymentmethod`
 --
 
-INSERT INTO `mode_payments` (`id`, `descripcion`, `created_at`, `updated_at`) VALUES
-(1, 'Efectivo', '2019-08-15 05:00:00', '2019-08-15 05:00:00'),
-(2, 'Tarjeta', '2019-08-15 05:00:00', '2019-08-15 05:00:00'),
-(3, 'Paypal', '2019-08-15 05:00:00', '2019-08-15 05:00:00');
+INSERT INTO `paymentmethod` (`id`, `description`, `estado`, `created_at`, `updated_at`) VALUES
+(1, 'Efectivo', '1', '2019-09-08 21:39:06', '2019-09-08 21:47:10'),
+(2, 'Tarjeta', '1', '2019-09-08 21:39:19', '2019-09-08 21:39:19'),
+(3, 'Paypal', '1', '2019-09-08 21:45:08', '2019-09-08 21:45:08');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `modules`
+-- Estructura de tabla para la tabla `paymentstatus`
 --
 
-CREATE TABLE `modules` (
+CREATE TABLE `paymentstatus` (
+  `id` int(11) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `estado` char(1) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `paymentstatus`
+--
+
+INSERT INTO `paymentstatus` (`id`, `description`, `estado`, `created_at`, `updated_at`) VALUES
+(1, 'Al contado', '1', '2019-09-08 22:15:40', '2019-09-08 22:15:40'),
+(2, 'Al crédito', '1', '2019-09-08 22:16:09', '2019-09-08 22:16:09'),
+(3, 'Adelanto', '1', '2019-09-08 22:16:21', '2019-09-08 22:16:21');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `paymentvoucher`
+--
+
+CREATE TABLE `paymentvoucher` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `code` varchar(255) NOT NULL,
+  `estado` char(1) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `paymentvoucher`
+--
+
+INSERT INTO `paymentvoucher` (`id`, `name`, `code`, `estado`, `created_at`, `updated_at`) VALUES
+(1, 'Factura', 'FAC', '1', '2019-09-08 21:53:06', '2019-09-08 22:08:42'),
+(2, 'Boleta', 'BOL', '1', '2019-09-08 22:09:02', '2019-09-08 22:09:02'),
+(3, 'Nota de venta', 'NOT', '1', '2019-09-08 22:10:28', '2019-09-08 22:10:28');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `permission`
+--
+
+CREATE TABLE `permission` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `estado` char(1) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `permission`
+--
+
+INSERT INTO `permission` (`id`, `name`, `estado`, `created_at`, `updated_at`) VALUES
+(1, 'Ingreso de productos', '1', '2019-09-07 22:47:04', '2019-09-07 22:47:04');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pivot_plan_module`
+--
+
+CREATE TABLE `pivot_plan_module` (
   `id` int(10) UNSIGNED NOT NULL,
-  `descripcion` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `estado` varchar(2) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `idModule` int(11) UNSIGNED NOT NULL,
+  `idPlan` int(11) UNSIGNED NOT NULL,
+  `estado` varchar(250) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `order_venta`
+-- Estructura de tabla para la tabla `planes_limit`
 --
 
-CREATE TABLE `order_venta` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `document_type_id` bigint(20) UNSIGNED NOT NULL,
-  `mode_payment_id` bigint(20) UNSIGNED NOT NULL,
-  `boxe_id` bigint(20) UNSIGNED NOT NULL,
-  `client_id` bigint(20) UNSIGNED NOT NULL,
-  `user_id` int(11) UNSIGNED NOT NULL,
-  `armedCombo_id` int(10) UNSIGNED NOT NULL,
-  `montoTotal` double(8,2) NOT NULL,
-  `montoPago` double(8,2) NOT NULL,
-  `fechaSistema` datetime NOT NULL,
-  `fechaVenta` datetime NOT NULL,
-  `estadoVentaPago` varchar(2) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tipoVenta` varchar(2) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `codigoTotales` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `correlativo` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `out_warehouses`
---
-
-CREATE TABLE `out_warehouses` (
+CREATE TABLE `planes_limit` (
   `id` int(10) UNSIGNED NOT NULL,
-  `producto_id` int(10) UNSIGNED NOT NULL,
-  `almacen_id` int(10) UNSIGNED NOT NULL,
-  `almacen_ubicacion_id` int(10) UNSIGNED NOT NULL,
-  `usuario_id` int(11) UNSIGNED NOT NULL,
-  `tipo_movimiento` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `fecha_movimiento` date NOT NULL,
-  `cantidad` int(11) NOT NULL,
+  `idLimit` int(11) UNSIGNED NOT NULL,
+  `idPlan` int(11) UNSIGNED NOT NULL,
+  `estado` varchar(250) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `pago_empleado`
+-- Estructura de tabla para la tabla `plans`
 --
 
-CREATE TABLE `pago_empleado` (
+CREATE TABLE `plans` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `name` varchar(250) NOT NULL,
+  `priceplan` decimal(8,2) NOT NULL,
+  `estado` varchar(2) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `plans`
+--
+
+INSERT INTO `plans` (`id`, `name`, `priceplan`, `estado`, `created_at`, `updated_at`) VALUES
+(1, 'Basico', '50.50', '1', '2019-09-08 23:26:31', '2019-09-08 23:26:31'),
+(2, 'Estandar', '70.89', '1', '2019-09-09 00:05:56', '2019-09-09 00:05:56');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `plans_module`
+--
+
+CREATE TABLE `plans_module` (
   `id` int(10) UNSIGNED NOT NULL,
-  `id_empleado` int(10) UNSIGNED NOT NULL,
-  `sueldo_bruto` decimal(8,2) NOT NULL,
-  `descuento` decimal(8,2) NOT NULL,
-  `bonificacion` decimal(8,2) NOT NULL,
-  `sueldo_neto` decimal(8,2) NOT NULL,
-  `fecha_pago` datetime NOT NULL,
-  `estado_pago` varchar(2) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(250) NOT NULL,
+  `estado` varchar(2) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `plans_module`
+--
+
+INSERT INTO `plans_module` (`id`, `name`, `estado`, `created_at`, `updated_at`) VALUES
+(1, 'productos', '1', '2019-09-09 02:15:01', '2019-09-09 02:19:20'),
+(2, 'proovedores', '1', '2019-09-09 02:19:29', '2019-09-09 02:19:29');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `payment_order_vent`
+-- Estructura de tabla para la tabla `plans_settings`
 --
 
-CREATE TABLE `payment_order_vent` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `order_venta_id` bigint(20) UNSIGNED NOT NULL,
-  `montoPago` double(8,2) NOT NULL,
-  `fechaPago` datetime NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `payment_purchase_orders`
---
-
-CREATE TABLE `payment_purchase_orders` (
+CREATE TABLE `plans_settings` (
   `id` int(10) UNSIGNED NOT NULL,
-  `orden_compra_pedido_id` int(10) UNSIGNED NOT NULL,
-  `monto_pago` decimal(8,2) NOT NULL,
-  `fecha_pago` date NOT NULL,
+  `description` varchar(250) NOT NULL,
+  `value` varchar(250) NOT NULL,
+  `estado` varchar(2) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `plans_settings`
+--
+
+INSERT INTO `plans_settings` (`id`, `description`, `value`, `estado`, `created_at`, `updated_at`) VALUES
+(1, 'config1', '30', '1', '2019-09-09 03:43:09', '2019-09-09 03:43:09'),
+(2, 'config2', '12', '1', '2019-09-09 04:15:56', '2019-09-09 04:15:56');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `presentations`
+-- Estructura de tabla para la tabla `typedocumentcostumers`
 --
 
-CREATE TABLE `presentations` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `nombre` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `estado` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL,
+CREATE TABLE `typedocumentcostumers` (
+  `id` int(11) NOT NULL,
+  `code` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `estado` char(1) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `presentations`
+-- Volcado de datos para la tabla `typedocumentcostumers`
 --
 
-INSERT INTO `presentations` (`id`, `nombre`, `estado`, `created_at`, `updated_at`) VALUES
-(1, 'balde', '1', '2019-08-24 05:15:03', '2019-08-24 05:23:57'),
-(2, 'barra', '1', '2019-08-24 05:16:50', '2019-08-24 05:16:50'),
-(3, 'bolsa', '1', '2019-08-24 05:16:55', '2019-08-24 05:16:55'),
-(4, 'botella', '1', '2019-08-24 05:17:01', '2019-08-24 05:17:01'),
-(6, 'casco', '1', '2019-08-24 05:17:13', '2019-08-24 05:17:13'),
-(7, 'Display', '1', '2019-08-24 05:21:12', '2019-08-24 05:21:12');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `products`
---
-
-CREATE TABLE `products` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `descripcion` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `presentacion_id` int(10) UNSIGNED NOT NULL,
-  `unidad_grupo_id` int(10) UNSIGNED NOT NULL,
-  `unidad_individual_id` int(10) UNSIGNED NOT NULL,
-  `unidad_peso_id` int(10) UNSIGNED NOT NULL,
-  `marca_id` int(10) UNSIGNED NOT NULL,
-  `subfamilia_id` int(10) UNSIGNED NOT NULL,
-  `codigo` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `detalle` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `peso_neto` decimal(8,2) NOT NULL,
-  `peso_bruto` decimal(8,2) NOT NULL,
-  `estado` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `purchase_orders`
---
-
-CREATE TABLE `purchase_orders` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `correlativo` varchar(13) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `proveedor_id` int(10) UNSIGNED NOT NULL,
-  `proveedor_contacto_id` int(10) UNSIGNED NOT NULL,
-  `usuario_id` int(11) UNSIGNED NOT NULL,
-  `forma_pago_id` int(10) UNSIGNED NOT NULL,
-  `total_monto` decimal(8,2) NOT NULL,
-  `total_pago` decimal(8,2) NOT NULL,
-  `fecha_sistema` datetime NOT NULL,
-  `fecha_pedido` datetime NOT NULL,
-  `estado_pedido` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
-  `estado_pedido_pago` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `roles`
---
-
-CREATE TABLE `roles` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `descripcion` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `estado` varchar(2) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `roles_user`
---
-
-CREATE TABLE `roles_user` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `role_id` int(10) UNSIGNED NOT NULL,
-  `user_id` int(11) UNSIGNED NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `subfamilies`
---
-
-CREATE TABLE `subfamilies` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `descripcion` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `familia_id` int(10) UNSIGNED NOT NULL,
-  `estado` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Volcado de datos para la tabla `subfamilies`
---
-
-INSERT INTO `subfamilies` (`id`, `descripcion`, `familia_id`, `estado`, `created_at`, `updated_at`) VALUES
-(1, 'Acondicionador', 29, '1', '2019-08-24 05:44:40', '2019-08-24 05:44:40'),
-(2, 'Afeitador', 29, '1', '2019-08-24 05:44:56', '2019-08-24 05:44:56'),
-(3, 'Cepillos', 29, '1', '2019-08-24 05:45:06', '2019-08-24 05:45:06'),
-(4, 'Crema de peinar', 29, '1', '2019-08-24 05:45:24', '2019-08-24 05:45:24'),
-(5, 'Crema tocador', 29, '1', '2019-08-24 05:45:33', '2019-08-24 05:45:33');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `suppliers`
---
-
-CREATE TABLE `suppliers` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `ruc` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `razon_social` varchar(90) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ubigeo_id` int(10) UNSIGNED NOT NULL,
-  `telefono` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `estado` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `suppliers_contacts`
---
-
-CREATE TABLE `suppliers_contacts` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `nombre` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `proveedor_id` int(10) UNSIGNED NOT NULL,
-  `celular` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `estado` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `type_payments`
---
-
-CREATE TABLE `type_payments` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `forma_pago` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `estado` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+INSERT INTO `typedocumentcostumers` (`id`, `code`, `description`, `estado`, `created_at`, `updated_at`) VALUES
+(1, 'dn', 'DNI', '1', '2019-09-08 22:33:56', '2019-09-08 22:34:30'),
+(2, 'rc', 'RUC', '1', '2019-09-08 22:34:25', '2019-09-08 22:34:25'),
+(3, 'cext', 'Carnet de extranjeria', '1', '2019-09-08 22:34:51', '2019-09-08 22:34:51');
 
 -- --------------------------------------------------------
 
@@ -2762,11 +2633,11 @@ CREATE TABLE `unit_of_measures` (
 --
 
 INSERT INTO `unit_of_measures` (`id`, `abreviatura`, `equivalencia`, `estado`, `created_at`, `updated_at`) VALUES
-(1, 'x1', 1, '1', '2019-08-24 03:54:59', '2019-08-24 04:23:41'),
-(2, 'x2', 2, '1', '2019-08-24 03:55:13', '2019-08-24 04:23:36'),
-(3, 'x3', 3, '1', '2019-08-24 03:55:18', '2019-08-24 03:55:18'),
-(4, 'x4', 4, '1', '2019-08-24 03:55:22', '2019-08-24 03:55:22'),
-(5, 'x5', 5, '1', '2019-08-24 03:55:28', '2019-08-24 03:55:28');
+(1, 'x1', 1, '1', '2019-08-24 08:54:59', '2019-08-24 09:23:41'),
+(2, 'x2', 2, '1', '2019-08-24 08:55:13', '2019-08-24 09:23:36'),
+(3, 'x3', 3, '1', '2019-08-24 08:55:18', '2019-08-24 08:55:18'),
+(4, 'x4', 4, '1', '2019-08-24 08:55:22', '2019-08-24 08:55:22'),
+(5, 'x5', 5, '1', '2019-08-24 08:55:28', '2019-08-24 08:55:28');
 
 -- --------------------------------------------------------
 
@@ -2788,85 +2659,20 @@ CREATE TABLE `unit_of_weights` (
 --
 
 INSERT INTO `unit_of_weights` (`id`, `abreviatura`, `equivalencia`, `estado`, `created_at`, `updated_at`) VALUES
-(1, 'gr', '0.000', '1', '2019-08-24 04:32:11', '2019-08-24 04:33:14'),
-(3, 'ml', '0.000', '1', '2019-08-24 04:34:21', '2019-08-24 04:34:21'),
-(4, 'cm3', '0.100', '1', '2019-08-24 04:34:35', '2019-08-24 04:52:32'),
-(5, 'kg', '1.000', '1', '2019-08-24 04:35:59', '2019-08-24 04:35:59'),
-(6, 'lt', '1.000', '1', '2019-08-24 04:37:04', '2019-08-24 04:37:04');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `users`
---
-
-CREATE TABLE `users` (
-  `id` int(11) UNSIGNED NOT NULL,
-  `username` varchar(250) NOT NULL,
-  `password` text NOT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `users`
---
-
-INSERT INTO `users` (`id`, `username`, `password`, `created_at`, `updated_at`) VALUES
-(1, 'omontoya', '$2y$10$gKLSajViCQGipNF60Yy3R.zta1/Vfy5IoVZMhtAlAp4q1sUXU1DZS', '2019-08-18 17:03:07', '2019-08-18 17:03:07');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `warehouses`
---
-
-CREATE TABLE `warehouses` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `orden_compra_pedido_id` int(10) UNSIGNED NOT NULL,
-  `producto_id` int(10) UNSIGNED NOT NULL,
-  `stock` int(11) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `warehouse_ubications`
---
-
-CREATE TABLE `warehouse_ubications` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `nombre` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `descripcion` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `estado` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+(1, 'gr', '0.000', '1', '2019-08-24 09:32:11', '2019-08-24 09:33:14'),
+(3, 'ml', '0.000', '1', '2019-08-24 09:34:21', '2019-08-24 09:34:21'),
+(4, 'cm3', '0.100', '1', '2019-08-24 09:34:35', '2019-08-24 09:52:32'),
+(5, 'kg', '1.000', '1', '2019-08-24 09:35:59', '2019-08-24 09:35:59'),
+(6, 'lt', '1.000', '1', '2019-08-24 09:37:04', '2019-08-24 09:37:04');
 
 --
 -- Índices para tablas volcadas
 --
 
 --
--- Indices de la tabla `acceso`
---
-ALTER TABLE `acceso`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `role_id` (`role_id`,`module_id`),
-  ADD KEY `acceso_module_foreign` (`module_id`);
-
---
 -- Indices de la tabla `addresses`
 --
 ALTER TABLE `addresses`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `armed_combos`
---
-ALTER TABLE `armed_combos`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -2876,106 +2682,16 @@ ALTER TABLE `bank`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `boxes`
+-- Indices de la tabla `countries`
 --
-ALTER TABLE `boxes`
+ALTER TABLE `countries`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `brands`
+-- Indices de la tabla `limits`
 --
-ALTER TABLE `brands`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `brands_subfamilia_id_index` (`subfamilia_id`);
-
---
--- Indices de la tabla `cargo`
---
-ALTER TABLE `cargo`
+ALTER TABLE `limits`
   ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `clients`
---
-ALTER TABLE `clients`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `clients_document_types_id_foreign` (`document_types_id`),
-  ADD KEY `ubigeo_id` (`ubigeo_id`);
-
---
--- Indices de la tabla `document_correlatives`
---
-ALTER TABLE `document_correlatives`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `document_correlatives_document_types_comprobant_id_index` (`document_types_comprobant_id`);
-
---
--- Indices de la tabla `document_types`
---
-ALTER TABLE `document_types`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `document_types_comprobants`
---
-ALTER TABLE `document_types_comprobants`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `employee`
---
-ALTER TABLE `employee`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idcargo` (`idcargo`,`idhorario`,`idtipodocumento`,`idubigeo`,`idbanco`,`iduser`),
-  ADD KEY `employ_bank_foreign` (`idbanco`),
-  ADD KEY `employ_horario_foreign` (`idhorario`),
-  ADD KEY `employ_tdoc_foreign` (`idtipodocumento`),
-  ADD KEY `employ_ubigeo_foreign` (`idubigeo`),
-  ADD KEY `employ_user_foreign` (`iduser`);
-
---
--- Indices de la tabla `families`
---
-ALTER TABLE `families`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `historial_boxes`
---
-ALTER TABLE `historial_boxes`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `historial_boxes_boxe_id_foreign` (`boxe_id`),
-  ADD KEY `user_id` (`user_id`);
-
---
--- Indices de la tabla `horario`
---
-ALTER TABLE `horario`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `list_armed_combos`
---
-ALTER TABLE `list_armed_combos`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `list_armed_combos_almacen_id_index` (`almacen_id`),
-  ADD KEY `list_armed_combos_combo_armado_id_index` (`combo_armado_id`);
-
---
--- Indices de la tabla `list_order_vent`
---
-ALTER TABLE `list_order_vent`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `list_order_vent_order_venta_id_foreign` (`order_venta_id`),
-  ADD KEY `armedCombo_id` (`armedCombo_id`);
-
---
--- Indices de la tabla `list_payment_purchase_orders`
---
-ALTER TABLE `list_payment_purchase_orders`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `list_payment_purchase_orders_orden_compra_pedido_id_index` (`orden_compra_pedido_id`),
-  ADD KEY `list_payment_purchase_orders_producto_id_index` (`producto_id`);
 
 --
 -- Indices de la tabla `migrations`
@@ -2984,127 +2700,67 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `mode_payments`
+-- Indices de la tabla `paymentmethod`
 --
-ALTER TABLE `mode_payments`
+ALTER TABLE `paymentmethod`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `modules`
+-- Indices de la tabla `paymentstatus`
 --
-ALTER TABLE `modules`
+ALTER TABLE `paymentstatus`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `order_venta`
+-- Indices de la tabla `paymentvoucher`
 --
-ALTER TABLE `order_venta`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `order_venta_document_type_id_foreign` (`document_type_id`),
-  ADD KEY `order_venta_mode_payment_id_foreign` (`mode_payment_id`),
-  ADD KEY `order_venta_boxe_id_foreign` (`boxe_id`),
-  ADD KEY `order_venta_client_id_foreign` (`client_id`),
-  ADD KEY `user_id` (`user_id`,`armedCombo_id`),
-  ADD KEY `order_venta_armed_combos_id_foreign` (`armedCombo_id`);
-
---
--- Indices de la tabla `out_warehouses`
---
-ALTER TABLE `out_warehouses`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `out_warehouses_producto_id_index` (`producto_id`),
-  ADD KEY `out_warehouses_almacen_id_index` (`almacen_id`),
-  ADD KEY `out_warehouses_almacen_ubicacion_id_index` (`almacen_ubicacion_id`),
-  ADD KEY `usuario_id` (`usuario_id`);
-
---
--- Indices de la tabla `pago_empleado`
---
-ALTER TABLE `pago_empleado`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_empleado` (`id_empleado`);
-
---
--- Indices de la tabla `payment_order_vent`
---
-ALTER TABLE `payment_order_vent`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `payment_order_vent_order_venta_id_foreign` (`order_venta_id`);
-
---
--- Indices de la tabla `payment_purchase_orders`
---
-ALTER TABLE `payment_purchase_orders`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `payment_purchase_orders_orden_compra_pedido_id_index` (`orden_compra_pedido_id`);
-
---
--- Indices de la tabla `presentations`
---
-ALTER TABLE `presentations`
+ALTER TABLE `paymentvoucher`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `products`
+-- Indices de la tabla `permission`
 --
-ALTER TABLE `products`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `products_presentacion_id_index` (`presentacion_id`),
-  ADD KEY `products_unidad_grupo_id_index` (`unidad_grupo_id`),
-  ADD KEY `products_unidad_individual_id_index` (`unidad_individual_id`),
-  ADD KEY `products_unidad_peso_id_index` (`unidad_peso_id`),
-  ADD KEY `products_marca_id_index` (`marca_id`),
-  ADD KEY `products_subfamilia_id_index` (`subfamilia_id`);
-
---
--- Indices de la tabla `purchase_orders`
---
-ALTER TABLE `purchase_orders`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `purchase_orders_proveedor_id_index` (`proveedor_id`),
-  ADD KEY `purchase_orders_proveedor_contacto_id_index` (`proveedor_contacto_id`),
-  ADD KEY `purchase_orders_forma_pago_id_index` (`forma_pago_id`),
-  ADD KEY `usuario_id` (`usuario_id`);
-
---
--- Indices de la tabla `roles`
---
-ALTER TABLE `roles`
+ALTER TABLE `permission`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `roles_user`
+-- Indices de la tabla `pivot_plan_module`
 --
-ALTER TABLE `roles_user`
+ALTER TABLE `pivot_plan_module`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `role_id` (`role_id`,`user_id`),
-  ADD KEY `roles_user_foreign` (`user_id`);
+  ADD KEY `module_foreign` (`idModule`),
+  ADD KEY `plan_foreign` (`idPlan`);
 
 --
--- Indices de la tabla `subfamilies`
+-- Indices de la tabla `planes_limit`
 --
-ALTER TABLE `subfamilies`
+ALTER TABLE `planes_limit`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `subfamilies_familia_id_index` (`familia_id`);
+  ADD KEY `idLimit` (`idLimit`,`idPlan`),
+  ADD KEY `plan_foreign` (`idPlan`);
 
 --
--- Indices de la tabla `suppliers`
+-- Indices de la tabla `plans`
 --
-ALTER TABLE `suppliers`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `suppliers_ubigeo_id_index` (`ubigeo_id`);
+ALTER TABLE `plans`
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `suppliers_contacts`
+-- Indices de la tabla `plans_module`
 --
-ALTER TABLE `suppliers_contacts`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `suppliers_contacts_proveedor_id_index` (`proveedor_id`);
+ALTER TABLE `plans_module`
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `type_payments`
+-- Indices de la tabla `plans_settings`
 --
-ALTER TABLE `type_payments`
+ALTER TABLE `plans_settings`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `typedocumentcostumers`
+--
+ALTER TABLE `typedocumentcostumers`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -3120,35 +2776,8 @@ ALTER TABLE `unit_of_weights`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `username` (`username`);
-
---
--- Indices de la tabla `warehouses`
---
-ALTER TABLE `warehouses`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `warehouses_orden_compra_pedido_id_index` (`orden_compra_pedido_id`),
-  ADD KEY `warehouses_producto_id_index` (`producto_id`);
-
---
--- Indices de la tabla `warehouse_ubications`
---
-ALTER TABLE `warehouse_ubications`
-  ADD PRIMARY KEY (`id`);
-
---
 -- AUTO_INCREMENT de las tablas volcadas
 --
-
---
--- AUTO_INCREMENT de la tabla `acceso`
---
-ALTER TABLE `acceso`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `addresses`
@@ -3157,208 +2786,94 @@ ALTER TABLE `addresses`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2037;
 
 --
--- AUTO_INCREMENT de la tabla `armed_combos`
---
-ALTER TABLE `armed_combos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de la tabla `bank`
 --
 ALTER TABLE `bank`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de la tabla `boxes`
+-- AUTO_INCREMENT de la tabla `countries`
 --
-ALTER TABLE `boxes`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+ALTER TABLE `countries`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=241;
 
 --
--- AUTO_INCREMENT de la tabla `brands`
+-- AUTO_INCREMENT de la tabla `limits`
 --
-ALTER TABLE `brands`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `cargo`
---
-ALTER TABLE `cargo`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `clients`
---
-ALTER TABLE `clients`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT de la tabla `document_correlatives`
---
-ALTER TABLE `document_correlatives`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT de la tabla `document_types`
---
-ALTER TABLE `document_types`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT de la tabla `document_types_comprobants`
---
-ALTER TABLE `document_types_comprobants`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT de la tabla `employee`
---
-ALTER TABLE `employee`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `families`
---
-ALTER TABLE `families`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
-
---
--- AUTO_INCREMENT de la tabla `historial_boxes`
---
-ALTER TABLE `historial_boxes`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT de la tabla `horario`
---
-ALTER TABLE `horario`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `list_armed_combos`
---
-ALTER TABLE `list_armed_combos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `list_order_vent`
---
-ALTER TABLE `list_order_vent`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `list_payment_purchase_orders`
---
-ALTER TABLE `list_payment_purchase_orders`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `limits`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-
---
--- AUTO_INCREMENT de la tabla `mode_payments`
---
-ALTER TABLE `mode_payments`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT de la tabla `modules`
---
-ALTER TABLE `modules`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `order_venta`
+-- AUTO_INCREMENT de la tabla `paymentmethod`
 --
-ALTER TABLE `order_venta`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `paymentmethod`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT de la tabla `out_warehouses`
+-- AUTO_INCREMENT de la tabla `paymentstatus`
 --
-ALTER TABLE `out_warehouses`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `paymentstatus`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT de la tabla `pago_empleado`
+-- AUTO_INCREMENT de la tabla `paymentvoucher`
 --
-ALTER TABLE `pago_empleado`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `paymentvoucher`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT de la tabla `payment_order_vent`
+-- AUTO_INCREMENT de la tabla `permission`
 --
-ALTER TABLE `payment_order_vent`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `permission`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de la tabla `payment_purchase_orders`
+-- AUTO_INCREMENT de la tabla `pivot_plan_module`
 --
-ALTER TABLE `payment_purchase_orders`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `pivot_plan_module`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de la tabla `presentations`
+-- AUTO_INCREMENT de la tabla `planes_limit`
 --
-ALTER TABLE `presentations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+ALTER TABLE `planes_limit`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de la tabla `products`
+-- AUTO_INCREMENT de la tabla `plans`
 --
-ALTER TABLE `products`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `plans`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de la tabla `purchase_orders`
+-- AUTO_INCREMENT de la tabla `plans_module`
 --
-ALTER TABLE `purchase_orders`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `plans_module`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de la tabla `roles`
+-- AUTO_INCREMENT de la tabla `plans_settings`
 --
-ALTER TABLE `roles`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `plans_settings`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de la tabla `roles_user`
+-- AUTO_INCREMENT de la tabla `typedocumentcostumers`
 --
-ALTER TABLE `roles_user`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `subfamilies`
---
-ALTER TABLE `subfamilies`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT de la tabla `suppliers`
---
-ALTER TABLE `suppliers`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `suppliers_contacts`
---
-ALTER TABLE `suppliers_contacts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `type_payments`
---
-ALTER TABLE `type_payments`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `typedocumentcostumers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `unit_of_measures`
 --
 ALTER TABLE `unit_of_measures`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `unit_of_weights`
@@ -3367,181 +2882,15 @@ ALTER TABLE `unit_of_weights`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT de la tabla `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT de la tabla `warehouses`
---
-ALTER TABLE `warehouses`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `warehouse_ubications`
---
-ALTER TABLE `warehouse_ubications`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
 -- Restricciones para tablas volcadas
 --
 
 --
--- Filtros para la tabla `acceso`
+-- Filtros para la tabla `planes_limit`
 --
-ALTER TABLE `acceso`
-  ADD CONSTRAINT `acceso_module_foreign` FOREIGN KEY (`module_id`) REFERENCES `modules` (`id`),
-  ADD CONSTRAINT `acceso_rol_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`);
-
---
--- Filtros para la tabla `brands`
---
-ALTER TABLE `brands`
-  ADD CONSTRAINT `brands_subfamilia_id_foreign` FOREIGN KEY (`subfamilia_id`) REFERENCES `subfamilies` (`id`);
-
---
--- Filtros para la tabla `clients`
---
-ALTER TABLE `clients`
-  ADD CONSTRAINT `clients_adreesses_fk` FOREIGN KEY (`ubigeo_id`) REFERENCES `addresses` (`id`),
-  ADD CONSTRAINT `clients_document_types_id_foreign` FOREIGN KEY (`document_types_id`) REFERENCES `document_types` (`id`);
-
---
--- Filtros para la tabla `document_correlatives`
---
-ALTER TABLE `document_correlatives`
-  ADD CONSTRAINT `document_correlatives_document_types_comprobant_id_foreign` FOREIGN KEY (`document_types_comprobant_id`) REFERENCES `document_types_comprobants` (`id`);
-
---
--- Filtros para la tabla `employee`
---
-ALTER TABLE `employee`
-  ADD CONSTRAINT `employ_bank_foreign` FOREIGN KEY (`idbanco`) REFERENCES `bank` (`id`),
-  ADD CONSTRAINT `employ_horario_foreign` FOREIGN KEY (`idhorario`) REFERENCES `horario` (`id`),
-  ADD CONSTRAINT `employ_tdoc_foreign` FOREIGN KEY (`idtipodocumento`) REFERENCES `document_types` (`id`),
-  ADD CONSTRAINT `employ_ubigeo_foreign` FOREIGN KEY (`idubigeo`) REFERENCES `addresses` (`id`),
-  ADD CONSTRAINT `employ_user_foreign` FOREIGN KEY (`iduser`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `eploy_cargo_foreign` FOREIGN KEY (`idcargo`) REFERENCES `cargo` (`id`);
-
---
--- Filtros para la tabla `historial_boxes`
---
-ALTER TABLE `historial_boxes`
-  ADD CONSTRAINT `historial_boxes_boxe_id_foreign` FOREIGN KEY (`boxe_id`) REFERENCES `boxes` (`id`),
-  ADD CONSTRAINT `historial_boxes_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
-
---
--- Filtros para la tabla `list_armed_combos`
---
-ALTER TABLE `list_armed_combos`
-  ADD CONSTRAINT `list_armed_combos_almacen_id_foreign` FOREIGN KEY (`almacen_id`) REFERENCES `warehouses` (`id`),
-  ADD CONSTRAINT `list_armed_combos_combo_armado_id_foreign` FOREIGN KEY (`combo_armado_id`) REFERENCES `armed_combos` (`id`);
-
---
--- Filtros para la tabla `list_order_vent`
---
-ALTER TABLE `list_order_vent`
-  ADD CONSTRAINT `list_order_vent_armed_combsid_foreign` FOREIGN KEY (`armedCombo_id`) REFERENCES `armed_combos` (`id`),
-  ADD CONSTRAINT `list_order_vent_order_venta_id_foreign` FOREIGN KEY (`order_venta_id`) REFERENCES `order_venta` (`id`);
-
---
--- Filtros para la tabla `list_payment_purchase_orders`
---
-ALTER TABLE `list_payment_purchase_orders`
-  ADD CONSTRAINT `list_payment_purchase_orders_orden_compra_pedido_id_foreign` FOREIGN KEY (`orden_compra_pedido_id`) REFERENCES `purchase_orders` (`id`),
-  ADD CONSTRAINT `list_payment_purchase_orders_producto_id_foreign` FOREIGN KEY (`producto_id`) REFERENCES `products` (`id`);
-
---
--- Filtros para la tabla `order_venta`
---
-ALTER TABLE `order_venta`
-  ADD CONSTRAINT `order_venta_armed_combos_id_foreign` FOREIGN KEY (`armedCombo_id`) REFERENCES `armed_combos` (`id`),
-  ADD CONSTRAINT `order_venta_boxe_id_foreign` FOREIGN KEY (`boxe_id`) REFERENCES `boxes` (`id`),
-  ADD CONSTRAINT `order_venta_client_id_foreign` FOREIGN KEY (`client_id`) REFERENCES `clients` (`id`),
-  ADD CONSTRAINT `order_venta_document_type_id_foreign` FOREIGN KEY (`document_type_id`) REFERENCES `document_types` (`id`),
-  ADD CONSTRAINT `order_venta_mode_payment_id_foreign` FOREIGN KEY (`mode_payment_id`) REFERENCES `mode_payments` (`id`),
-  ADD CONSTRAINT `order_venta_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
-
---
--- Filtros para la tabla `out_warehouses`
---
-ALTER TABLE `out_warehouses`
-  ADD CONSTRAINT `out_warehouses_almacen_id_foreign` FOREIGN KEY (`almacen_id`) REFERENCES `warehouses` (`id`),
-  ADD CONSTRAINT `out_warehouses_almacen_ubicacion_id_foreign` FOREIGN KEY (`almacen_ubicacion_id`) REFERENCES `warehouse_ubications` (`id`),
-  ADD CONSTRAINT `out_warehouses_producto_id_foreign` FOREIGN KEY (`producto_id`) REFERENCES `products` (`id`),
-  ADD CONSTRAINT `out_warehouses_user_id_foreign` FOREIGN KEY (`usuario_id`) REFERENCES `users` (`id`);
-
---
--- Filtros para la tabla `pago_empleado`
---
-ALTER TABLE `pago_empleado`
-  ADD CONSTRAINT `pago_empleado_id_foreign` FOREIGN KEY (`id_empleado`) REFERENCES `employee` (`id`);
-
---
--- Filtros para la tabla `payment_order_vent`
---
-ALTER TABLE `payment_order_vent`
-  ADD CONSTRAINT `payment_order_vent_order_venta_id_foreign` FOREIGN KEY (`order_venta_id`) REFERENCES `order_venta` (`id`);
-
---
--- Filtros para la tabla `payment_purchase_orders`
---
-ALTER TABLE `payment_purchase_orders`
-  ADD CONSTRAINT `payment_purchase_orders_orden_compra_pedido_id_foreign` FOREIGN KEY (`orden_compra_pedido_id`) REFERENCES `purchase_orders` (`id`);
-
---
--- Filtros para la tabla `products`
---
-ALTER TABLE `products`
-  ADD CONSTRAINT `products_marca_id_foreign` FOREIGN KEY (`marca_id`) REFERENCES `brands` (`id`),
-  ADD CONSTRAINT `products_presentacion_id_foreign` FOREIGN KEY (`presentacion_id`) REFERENCES `presentations` (`id`),
-  ADD CONSTRAINT `products_subfamilia_id_foreign` FOREIGN KEY (`subfamilia_id`) REFERENCES `subfamilies` (`id`),
-  ADD CONSTRAINT `products_unidad_grupo_id_foreign` FOREIGN KEY (`unidad_grupo_id`) REFERENCES `unit_of_measures` (`id`),
-  ADD CONSTRAINT `products_unidad_individual_id_foreign` FOREIGN KEY (`unidad_individual_id`) REFERENCES `unit_of_measures` (`id`),
-  ADD CONSTRAINT `products_unidad_peso_id_foreign` FOREIGN KEY (`unidad_peso_id`) REFERENCES `unit_of_weights` (`id`);
-
---
--- Filtros para la tabla `purchase_orders`
---
-ALTER TABLE `purchase_orders`
-  ADD CONSTRAINT `purchase_orders_forma_pago_id_foreign` FOREIGN KEY (`forma_pago_id`) REFERENCES `type_payments` (`id`),
-  ADD CONSTRAINT `purchase_orders_proveedor_contacto_id_foreign` FOREIGN KEY (`proveedor_contacto_id`) REFERENCES `suppliers_contacts` (`id`),
-  ADD CONSTRAINT `purchase_orders_proveedor_id_foreign` FOREIGN KEY (`proveedor_id`) REFERENCES `suppliers` (`id`),
-  ADD CONSTRAINT `purchase_orders_user_id_foreign` FOREIGN KEY (`usuario_id`) REFERENCES `users` (`id`);
-
---
--- Filtros para la tabla `roles_user`
---
-ALTER TABLE `roles_user`
-  ADD CONSTRAINT `roles_rol_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`),
-  ADD CONSTRAINT `roles_user_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
-
---
--- Filtros para la tabla `subfamilies`
---
-ALTER TABLE `subfamilies`
-  ADD CONSTRAINT `subfamilies_familia_id_foreign` FOREIGN KEY (`familia_id`) REFERENCES `families` (`id`);
-
---
--- Filtros para la tabla `suppliers`
---
-ALTER TABLE `suppliers`
-  ADD CONSTRAINT `suppliers_ubigeo_id_foreign` FOREIGN KEY (`ubigeo_id`) REFERENCES `addresses` (`id`);
-
---
--- Filtros para la tabla `suppliers_contacts`
---
-ALTER TABLE `suppliers_contacts`
-  ADD CONSTRAINT `suppliers_contacts_proveedor_id_foreign` FOREIGN KEY (`proveedor_id`) REFERENCES `suppliers` (`id`);
-
---
--- Filtros para la tabla `warehouses`
---
-ALTER TABLE `warehouses`
-  ADD CONSTRAINT `warehouses_orden_compra_pedido_id_foreign` FOREIGN KEY (`orden_compra_pedido_id`) REFERENCES `purchase_orders` (`id`),
-  ADD CONSTRAINT `warehouses_producto_id_foreign` FOREIGN KEY (`producto_id`) REFERENCES `products` (`id`);
+ALTER TABLE `planes_limit`
+  ADD CONSTRAINT `limit_foreign` FOREIGN KEY (`idLimit`) REFERENCES `limits` (`id`),
+  ADD CONSTRAINT `plan_foreign` FOREIGN KEY (`idPlan`) REFERENCES `plans` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
