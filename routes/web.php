@@ -195,6 +195,26 @@ $router->group(['prefix' => 'limits'], function () use ($router) {
 
 });
 
+$router->group(['prefix' => 'settings-plan'], function () use ($router) {
+
+    $router->get('/', 'PlanSettingsController@index');
+    $router->post('/', 'PlanSettingsController@store');
+    $router->get('{limits}', 'PlanSettingsController@show');
+    $router->put('{limits}', 'PlanSettingsController@update');
+    $router->delete('{limits}', 'PlanSettingsController@destroy');
+
+});
+
+$router->group(['prefix' => 'plan-limit'], function () use ($router) {
+
+    $router->get('/', 'PlanesLimitController@index');
+    $router->post('/', 'PlanesLimitController@store');
+    $router->get('{plan-limit}', 'PlanesLimitController@show');
+    $router->put('{plan-limit}', 'PlanesLimitController@update');
+    $router->delete('{plan-limit}', 'PlanesLimitController@destroy');
+
+});
+
 
 $router->group(['prefix' => 'cliente'], function () use ($router) {
 
