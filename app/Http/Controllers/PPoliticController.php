@@ -1,21 +1,25 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\Limit;
-
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use App\PPolitic;
 use App\Traits\ApiResponse;
 use Illuminate\Http\Response;
-use Illuminate\Validation\ValidationException;
 
-class LimitController extends Controller
+class PPoliticController extends Controller
 {
-    use ApiResponse;
+    /**
+     * @var \Tymon\JWTAuth\JWTAuth
+     */
+   
 
     public function index(Request $request)
     {
-        $limit = Limit::where('estado',1)->get();
+        $reponse = PPolitic::where('estado',1)->get();
+        
         return $this->successResponse($limit);
     }
 
@@ -34,13 +38,16 @@ class LimitController extends Controller
         return $this->successResponse($limit, Response::HTTP_CREATED);
     }
 
-    public function show($limit)
+
+  public function show($limit)
     {
         $limit = Limit::findOrFail($limit);
 
         return $this->successResponse($limit, Response::HTTP_OK);
     }
-    
+
+
+ 
     public function update(Request $request, $limit)
     {
         $rules = [
